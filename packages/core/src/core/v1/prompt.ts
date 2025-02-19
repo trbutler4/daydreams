@@ -76,7 +76,7 @@ export type InferPromptComponents<TPrompt extends AnyPrompt | string> =
   TPrompt extends Prompt<any, infer Components> ? Components : never;
 
 export function getZodJsonSchema(schema: ZodType<any>) {
-  return zodToJsonSchema(schema, "schema").definitions!.schema;
+  return zodToJsonSchema(schema as any, { name: "schema" }).definitions?.schema;
 }
 
 export function createPrompt<

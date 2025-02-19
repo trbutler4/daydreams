@@ -58,7 +58,9 @@ export function formatOutputInterface(output: Output) {
         : null,
       {
         tag: "schema",
-        content: JSON.stringify(zodToJsonSchema(output.schema, "output")),
+        content: JSON.stringify(
+          zodToJsonSchema(output.schema as any, { name: "output" })
+        ),
       },
     ].filter((c) => !!c),
   });
